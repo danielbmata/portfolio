@@ -1,35 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from 'react';
+import Cabecalho from './componentes/Cabecalho';
+import Apresentacao from './componentes/Apresentacao';
+import Projetos from './componentes/Projetos';
+import Rodape from './componentes/Rodape';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [modoEscuro, setModoEscuro] = useState(false);
+
+  useEffect(() => {
+    // Verificar a preferência do usuário armazenada
+    const preferenciaModoEscuro = localStorage.getItem('modoEscuro') === 'true';
+    setModoEscuro(preferenciaModoEscuro);
+  }, []);
+
+  const alternarModo = () => {
+    setModoEscuro(!modoEscuro);
+    localStorage.setItem('modoEscuro', !modoEscuro);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className={`${modoEscuro ? 'bg-fundo_escuro text-cor_texto_claro' : 'bg-fundo_claro text-cor_texto_escuro'} min-h-screen transition-colors duration-300`}>
+      {/* Cabeçalho */}
+      <Cabecalho alternarModo={alternarModo} modoEscuro={modoEscuro} />
+
+      {/* Seção de Apresentação */}
+      <section id="apresentacao" className="px-4 py-8">
+        <Apresentacao />
+      </section>
+
+      {/* Seção de Projetos */}
+      <section id="projetos" className="px-4 py-8">
+        <Projetos />
+      </section>
+
+      {/* Rodapé */}
+      <Rodape />
+    </div>
+  );
 }
 
-export default App
+export default App;
