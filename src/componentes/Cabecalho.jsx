@@ -1,37 +1,38 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom'; // Importe o Link do React Router
 
 export default function Cabecalho({ alternarModo, modoEscuro }) {
   const [menuAberto, setMenuAberto] = useState(false);
 
   return (
-    <header className={`bg-azul-escuro text-branco shadow-lg`}>
+    <header className="bg-azul-escuro text-branco shadow-lg">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo ou título */}
         <div className="text-3xl font-extrabold">
-          <a href="#" className="text-branco hover:text-amarelo-suave transition-colors duration-300">
+          <Link to="/" className="text-branco hover:text-amarelo-suave transition-colors duration-300">
             Daniel Mata
-          </a>
+          </Link>
         </div>
 
         {/* Menu de Navegação Desktop */}
         <nav className="hidden md:flex space-x-8 text-lg">
-          <a href="#apresentacao" className="text-branco hover:text-amarelo-suave transition-colors duration-300">Apresentação</a>
-          <a href="#projetos" className="text-branco hover:text-amarelo-suave transition-colors duration-300">Projetos</a>
-          <a href="#contato" className="text-branco hover:text-amarelo-suave transition-colors duration-300">Contato</a>
+          <Link to="/" className="text-branco hover:text-amarelo-suave transition-colors duration-300">Apresentação</Link>
+          <Link to="/projetos" className="text-branco hover:text-amarelo-suave transition-colors duration-300">Projetos</Link>
+          <Link to="/contato" className="text-branco hover:text-amarelo-suave transition-colors duration-300">Contato</Link>
         </nav>
 
-        {/* Botão para alternar entre modo claro e escuro, visível em todas as telas */}
+        {/* Botão para alternar entre modo claro e escuro */}
         <button
-          className="md:flex text-3xl text-branco focus:outline-none"
+          className="md:flex text-x1 text-branco focus:outline-none p-1 border-hidden"
           onClick={alternarModo}
         >
-          {modoEscuro ? '🌙' : '🌞'}
+          {modoEscuro ? '🌞' : '🌙'}
         </button>
 
         {/* Botão de Menu Hamburguer para Mobile */}
         <button
-          className="md:hidden text-3xl text-branco focus:outline-none"
+          className="md:hidden text-x1 text-branco focus:outline-none p-1 border-hidden"
           onClick={() => setMenuAberto(!menuAberto)}
         >
           &#9776;
@@ -42,9 +43,9 @@ export default function Cabecalho({ alternarModo, modoEscuro }) {
       {menuAberto && (
         <div className="md:hidden bg-azul-escuro text-branco p-4">
           <nav className="space-y-4">
-            <a href="#apresentacao" className="block text-lg text-branco hover:text-amarelo-suave transition-colors duration-300">Apresentação</a>
-            <a href="#projetos" className="block text-lg text-branco hover:text-amarelo-suave transition-colors duration-300">Projetos</a>
-            <a href="#contato" className="block text-lg text-branco hover:text-amarelo-suave transition-colors duration-300">Contato</a>
+            <Link to="/" className="block text-lg text-branco hover:text-amarelo-suave transition-colors duration-300">Apresentação</Link>
+            <Link to="/projetos" className="block text-lg text-branco hover:text-amarelo-suave transition-colors duration-300">Projetos</Link>
+            <Link to="/contato" className="block text-lg text-branco hover:text-amarelo-suave transition-colors duration-300">Contato</Link>
           </nav>
         </div>
       )}

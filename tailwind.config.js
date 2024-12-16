@@ -2,7 +2,7 @@
 export default {
   content: [
     "./index.html", 
-    "./src/**/*.{js,ts,jsx,tsx}" // Certifique-se de que isso está incluindo todos os arquivos onde as classes tailwind são usadas
+    "./src/**/*.{js,ts,jsx,tsx}" 
   ],
   theme: {
     extend: {
@@ -15,10 +15,10 @@ export default {
         fundo_claro: "#F8F9FA",
         texto_claro: "#FFFFFF",
         texto_escuro: "#023E8A",
-        cor_fundo_escuro: '#2d3748', // cor de fundo escuro
-        cor_texto_claro: '#f7fafc', // cor de texto claro
-        cor_fundo_claro: '#f9fafb', // cor de fundo claro
-        cor_texto_escuro: '#2d3748', // cor de texto escuro
+        cor_fundo_escuro: '#2d3748', 
+        cor_texto_claro: '#f7fafc', 
+        cor_fundo_claro: '#f9fafb', 
+        cor_texto_escuro: '#2d3748', 
       },
     },
   },

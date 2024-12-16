@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Cabecalho from './componentes/Cabecalho';
-import Apresentacao from './componentes/Apresentacao';
-import Projetos from './componentes/Projetos';
+import Apresentacao from './paginas/Apresentacao';
+import Projetos from './paginas/Projetos';
+import Contato from './paginas/Contato';
 import Rodape from './componentes/Rodape';
 
 function App() {
   const [modoEscuro, setModoEscuro] = useState(false);
 
   useEffect(() => {
-    // Verificar a preferência do usuário armazenada
     const preferenciaModoEscuro = localStorage.getItem('modoEscuro') === 'true';
     setModoEscuro(preferenciaModoEscuro);
   }, []);
@@ -19,22 +20,29 @@ function App() {
   };
 
   return (
-    <div className={`${modoEscuro ? 'bg-fundo_escuro text-cor_texto_claro' : 'bg-fundo_claro text-cor_texto_escuro'} min-h-screen transition-colors duration-300`}>
-      {/* Cabeçalho */}
-      <Cabecalho alternarModo={alternarModo} modoEscuro={modoEscuro} />
+    <div
+      className={`${
+        modoEscuro
+          ? "bg-gray-800 text-cor_texto_claro"
+          : "bg-fundo_claro text-cor_texto_escuro"
+      } min-h-screen flex flex-col`}
+    >
+      <Router>
+        {/* Cabeçalho */}
+        <Cabecalho alternarModo={alternarModo} modoEscuro={modoEscuro} />
 
-      {/* Seção de Apresentação */}
-      <section id="apresentacao" className="px-4 py-8">
-        <Apresentacao />
-      </section>
+        {/* Conteúdo principal */}
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Apresentacao />} />
+            <Route path="/projetos" element={<Projetos />} />
+            <Route path="/contato" element={<Contato />} />
+          </Routes>
+        </main>
 
-      {/* Seção de Projetos */}
-      <section id="projetos" className="px-4 py-8">
-        <Projetos />
-      </section>
-
-      {/* Rodapé */}
-      <Rodape />
+        {/* Rodapé */}
+        <Rodape />
+      </Router>
     </div>
   );
 }
