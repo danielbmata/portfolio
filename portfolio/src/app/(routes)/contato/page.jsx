@@ -4,20 +4,20 @@ export default function Contato() {
   const contacts = [
     {
       icon: Mail,
-      label: "seu-email@exemplo.com",
-      href: "mailto:seu-email@exemplo.com",
+      label: "d7mata@gmail.com",
+      href: "mailto:d7mata@gmail.com",
       color: "hover:text-blue-400"
     },
     {
       icon: Github,
       label: "GitHub",
-      href: "https://github.com/seu-usuario",
+      href: "https://github.com/danielbmata",
       color: "hover:text-purple-400"
     },
     {
       icon: Linkedin,
       label: "LinkedIn",
-      href: "https://linkedin.com/in/seu-perfil",
+      href: "https://linkedin.com/in/danielbmata",
       color: "hover:text-blue-500"
     }
   ];

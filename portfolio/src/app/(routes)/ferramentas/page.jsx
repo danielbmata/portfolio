@@ -9,15 +9,15 @@ export default function Ferramentas() {
         {[
           {
             title: "Desenvolvimento Frontend",
-            skills: ["React.js", "Next.js", "TailwindCSS", "TypeScript", "HTML5/CSS3"]
+            skills: ["React.js", "Next.js", "TailwindCSS", "HTML5/CSS3"]
           },
           {
             title: "Desenvolvimento Backend",
-            skills: ["Node.js", "Express", "MongoDB", "PostgreSQL", "REST APIs"]
+            skills: ["Node.js", "Python/Django"]
           },
           {
             title: "Ferramentas & DevOps",
-            skills: ["Git", "Docker", "VS Code", "GitHub Actions", "AWS"]
+            skills: ["Git", "VS Code", "AWS EC2"]
           }
         ].map((category, index) => (
           <div
